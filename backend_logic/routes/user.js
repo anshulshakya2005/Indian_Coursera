@@ -1,0 +1,13 @@
+const express = require("express");
+const router = express.Router();
+const {sendotp,signup,login,changepassword,updateDisplayPicture}= require("../controller/auth");
+const {resetpasswordtoken,resetpassword}=require("../controller/resetpassword");
+const{auth} =require("../middlewares/auth");
+router.post("/signup",signup);
+router.post("/login",login);
+router.post("/sendotp",sendotp);
+router.post("/changepassword",auth,changepassword);
+router.post("/reset-password-token",resetpasswordtoken);
+router.post("/reset-password",resetpassword);
+router.put("/updateDisplayPicture",auth,updateDisplayPicture);
+module.exports = router;
